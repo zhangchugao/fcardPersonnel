@@ -1,0 +1,72 @@
+{
+  "name": "fcardMobile",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "crypto-js": "^4.0.0",
+    "css-loader": "^2.0.0",
+    "element-ui": "^2.4.11",
+    "js-cookie": "^2.2.1",
+    "js-sha256": "^0.9.0",
+    "lib-flexible": "^0.3.2",
+    "material-design-icons-iconfont": "^4.0.3",
+    "moment": "^2.24.0",
+    "muse-ui": "^3.0.2",
+    "muse-ui-progress": "^0.1.0",
+    "muse-ui-toast": "^0.3.0",
+    "node-sass": "^4.10.0",
+    "postcss-pxtorem": "^5.1.1",
+    "px2rem-loader": "^0.1.9",
+    "sass-loader": "^7.1.0",
+    "svg-sprite-loader": "^5.0.0",
+    "vue": "^2.5.17",
+    "vue-avatar-editor-improved": "^1.0.4",
+    "vue-cropper": "^0.4.6",
+    "vue-i18n": "^8.18.1",
+    "vue-iscroll-view": "^1.0.3",
+    "vue-qr": "^2.2.1",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "worker-loader": "^2.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "font-awesome": "4.7.0",
+    "vue-cli-plugin-vuetify": "^0.4.6",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
