@@ -16,7 +16,7 @@
       <br/>
       {{$t('navbar.其他时间设置')}}：
       <p>
-        <mu-date-input :min-date='new Date()' @change='timeChange' icon="today" v-model="Time"  type="dateTime" full-width landscape></mu-date-input>
+        <mu-date-input :min-date='new Date()' @change='timeChange' icon="today" v-model="Time"  type="dateTime" full-width landscape container="bottomSheet" view-type="list" clock-type="24hr"></mu-date-input>
       </p>
 
       <div class="share">

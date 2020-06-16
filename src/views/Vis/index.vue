@@ -3,26 +3,32 @@
   <Nav icon="search" @openDialog="openD" :title="$route.query.item"></Nav>
   <div class="wrap" ref="loadmore">
     <!-- {{}} -->
-    <Table border @row-click="rowClick" size="mini" ref="table_data" style="width: 100%;position:fixed;z-index:50;" :height="36">
+    <Table row-key='VisitorID' border @row-click="rowClick" size="mini" ref="table_data" style="width: 100%;position:fixed;z-index:50;" :height="36">
       <table-column label="" width='48'></table-column>
       <table-column :label="$t('navbar.访客名称')" width='95'></table-column>
       <table-column :label="$t('Common.MobilePhone')" width="95"></table-column>
       <table-column :label="$t('navbar.证件号')"></table-column>
     </Table>
     <mu-load-more @refresh="refresh" :refreshing="refreshing" :loading="loading" @load="load" :loaded-all="loadedAll">
-      <Table :data="list" border @row-click="rowClick" size="mini" ref="table_data1" style="width: 100%;">
+      <Table row-key='VisitorID' :data="list" border @row-click="rowClick" size="mini" ref="table_data1" style="width: 100%;">
         <table-column type="expand">
           <template slot-scope="props">
 
             {{$t('navbar.事由')}}:<span>{{props.row.Reason}}</span>
             <br />
             <br />
-
-            {{$('navbar.备注')}}：<span>{{props.row.Remark}}</span>
-            <br />
-            <br />
-
             {{$t('navbar.被访者')}}：<span>{{props.row.Interviewee}}</span>
+            <br />
+            <br />
+            <!-- 出入权限时间：<span>{{ Date.parse(new Date(props.row.LeaveTime)) - Date.parse(new Date(props.row.CreateTime))}}</span> -->
+            出入权限时间：<span>{{props.row.LeaveTime?props.row.LeaveTime:''}}</span>
+            <br />
+            <br />
+             有效期：<span>{{ Date.parse(new Date(props.row.CreateTime))}}</span>
+            <br />
+            <br />
+
+             {{$t('navbar.备注')}}：<span>{{props.row.Remark}}</span>
 
           </template>
         </table-column>
@@ -42,7 +48,7 @@
           <mu-date-input v-model="searchitem.SearchBeginTime" :label="$t('Meet.Select_date')" label-float full-width container="bottomSheet"></mu-date-input>
         </mu-form-item>
         <mu-form-item label-position="right"  :label="$t('Meet.End_Time')+':'">
-          <mu-date-input v-model="searchitem.SearchEndTime" :label="$t('Meet.Select_date')" label-float full-width container="bottomSheet" :min-date="searchitem.SearchBeginTime"></mu-date-input>
+          <mu-date-input v-model="searchitem.SearchEndTime" :label="$t('Meet.Select_date')" label-float full-width container="bottomSheet" :min-date="new Date(searchitem.SearchBeginTime)"></mu-date-input>
         </mu-form-item>
         <mu-button color="primary" @click.native="submit" class="submit">{{$t('POS.search')}}</mu-button>
       </mu-form>

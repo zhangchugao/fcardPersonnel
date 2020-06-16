@@ -11,49 +11,49 @@
      
      
       <div class="mu-person-form">
-        <mu-form ref="form" :model="form" label-width="80">
+        <mu-form ref="form" :model="form" label-width="90">
           <mu-form-item label-position="right" icon='flight_takeoff'>
             <template slot="label">
-              <i class="el-icon-user"></i>　{{$t('navbar.姓名')}}:
+              <i class="el-icon-user"></i>　{{$t('navbar.姓名')}}
             </template>
             <mu-text-field v-model="form.name"></mu-text-field>
           </mu-form-item>
           <mu-form-item label-position="right" icon='flight_takeoff'>
             <template slot="label">
-              <i class="el-icon-user"></i>　{{$t('navbar.编号')}}:
+              <i class="el-icon-user"></i>　{{$t('navbar.编号')}}
             </template>
             <mu-text-field disabled v-model="form.PCode"></mu-text-field>
           </mu-form-item>
           <mu-form-item label-position="right"  icon='flight_takeoff'>
             <template slot="label">
-              <i class="el-icon-user"></i>　{{$t('navbar.部门')}}:
+              <i class="el-icon-user"></i>　{{$t('navbar.部门')}}
             </template>
             <mu-text-field disabled  v-model="form.DeptName"></mu-text-field>
           </mu-form-item>
 
           <mu-form-item label-position="right" icon='flight_takeoff'>
             <template slot="label">
-              <i class="el-icon-user"></i>　{{$t('navbar.卡号')}}:
+              <i class="el-icon-user"></i>　{{$t('navbar.卡号')}}
             </template>
             <mu-text-field v-model="form.CardData"></mu-text-field>
           </mu-form-item>
          
           <mu-form-item label-position="right">
             <template slot="label">
-              <i class="el-icon-user"></i>　{{$t('navbar.手机号')}}:
+              <i class="el-icon-user"></i>　{{$t('navbar.手机号')}}
             </template>
             <mu-text-field v-model="form.MobilePhone"></mu-text-field>
           </mu-form-item>
            <mu-form-item label-position="right" icon='flight_takeoff'>
             <template slot="label">
-              <i class="el-icon-user"></i>　{{$t('navbar.证件号')}}:
+              <i class="el-icon-user"></i>　{{$t('navbar.证件号')}}
             </template>
             <mu-text-field v-model="form.IdentityCard"></mu-text-field>
           </mu-form-item>
           
           <mu-form-item label-position="right" >
              <template slot="label">
-              <i class="el-icon-user"></i>　{{$t('navbar.地址')}}:
+              <i class="el-icon-user"></i>　{{$t('navbar.地址')}}
             </template>
             <mu-text-field v-model="form.addr"></mu-text-field>
           </mu-form-item>

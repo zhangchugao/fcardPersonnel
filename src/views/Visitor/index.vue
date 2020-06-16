@@ -332,7 +332,7 @@ export default {
         return
       }
       if (this.form.Address===''){
-        this.$toast.warning($t('Patrol.please_input_address'))
+        this.$toast.warning(this.$t('Patrol.please_input_address'))
         return
       }
       if (this.form.AccessID===''){
@@ -365,7 +365,7 @@ export default {
             });
             this.form=this.$options.data().form;
             this.imgUrl=write;
-            this.$toast.success(this.$t('navbar.修改信息成功'));
+            this.$toast.success(this.$t('table.Added_successfully'));
             this.form.AccessID=this.Access[0].AccessID
           }else{
             this.$toast.warning(res.ErrDesc);

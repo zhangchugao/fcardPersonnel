@@ -58,7 +58,7 @@
     </mu-dialog>
     <!-- 订餐详细信息 -->
     <mu-dialog width="360" transition="slide-right" fullscreen :open.sync="openSyncInfo">
-        <mu-appbar color="primary" :title="$t('navbar.订餐详情')">
+        <mu-appbar color="rgb(0, 150, 136)" :title="$t('navbar.订餐详情')">
             <mu-button slot="left" icon @click="openSyncInfo=false">
                 <mu-icon value="arrow_back"></mu-icon>
             </mu-button>
@@ -127,6 +127,8 @@ export default {
   created() {
     Information().then(res => {
       this.pID = res.RetData.pID
+    }).catch(err => {
+      console.log(err)
     })
   },
   mounted() {
@@ -152,7 +154,7 @@ export default {
           that.list = [...that.list, ...res.RetData];
         })
         .catch(err => {
-         
+         console.log(err)
         });
     },
     searchdata(){
@@ -180,7 +182,7 @@ export default {
           that.list = [...that.list, ...res.RetData];
         })
         .catch(err => {
-         
+         console.log(err)
         });
     },
     refresh() {
@@ -219,7 +221,7 @@ export default {
           }, 1000);
         })
         .catch(err => {
-          // alert(err)
+          console.log(err)
           that.loading = false;
         });
     },
@@ -304,7 +306,10 @@ export default {
                 this.form = this.$options.data().form
             }
         }).catch(err => {
-            this.$toast.error(err.ErrDesc)
+            this.$toast.error({
+              message: err.ErrDesc,
+              position: 'top'
+            })
         })
     }
   },
