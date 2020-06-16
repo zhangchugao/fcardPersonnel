@@ -17,7 +17,7 @@ module.exports = {
     productionSourceMap: false, // 生产环境是否生成 sourceMap 文件
     devServer: {
         // 设置主机地址
-        // host: 'localhost',
+        host: '192.168.1.117',
         // 设置默认端口
         port: 8080,
         // 设置代理

@@ -282,6 +282,7 @@ export default {
           }, 300);
         });
       }
+      that.closeDialog()
     },
     closeDialog() {
       this.openAlert = false;

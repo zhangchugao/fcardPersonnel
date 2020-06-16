@@ -15,7 +15,9 @@
             <table-column :label="$t('navbar.名称')" prop="MName"></table-column>
             <table-column :label="$t('navbar.订餐时间')">
               <template slot-scope="scope">
-                {{(parseInt(scope.row.BeginTime / 60)+'').padStart(2,0)+':'+((scope.row.BeginTime % 60)+'').padStart() }} -  {{(parseInt(scope.row.EndTime / 60)+'').padStart(2,0)+':'+(((scope.row.EndTime) % 60)+'').padStart(2,0) }}
+                {{(parseInt(scope.row.BeginTime / 60)+'').padStart(2,0)+':'+((scope.row.BeginTime % 60)+'').padStart(2,0) }} 
+                -  
+                {{(parseInt(scope.row.EndTime / 60)+'').padStart(2,0)+':'+(((scope.row.EndTime) % 60)+'').padStart(2,0) }}
               </template>  
             </table-column>
             <table-column :label="$t('navbar.可提前')">
@@ -123,7 +125,9 @@ export default {
     };
   },
   created() {
-    this.pID = window.localStorage.getItem('pID')
+    Information().then(res => {
+      this.pID = res.RetData.pID
+    })
   },
   mounted() {
     // this.getdata();
@@ -280,24 +284,12 @@ export default {
             this.$toast.warning(this.$t('navbar.请选择订餐餐段'))
             return
         }
-        let bDate = moment(this.form.ReservationDate).format('YYYY-MM-DD') + ' ' +this.MIMIselections[0].BeginTime  // 订餐时间
-        let td = new Date()
-        let tdate = td.getDate()
-        td.setDate(tdate + 1)
-        let mDate = moment(td).format('YYYY-MM-DD') + ' ' +this.MIMIselections[0].BeginTime    // 最大订餐时间
-        console.log('bDate', Date.parse(new Date(bDate)))
-        console.log('mDate', Date.parse(new Date(mDate)))
-        if (Date.parse(new Date(bDate)) > Date.parse(new Date(mDate))) {    // 如果订餐时间大于最大订餐天数
-            this.$toast.warning(this.$t('navbar.订餐时间大于最大订餐天数'))
-            return
-        }
-        let nd = new Date()
-        let maxDate = moment(nd).format('YYYY-MM-DD') + ' ' +this.MIMIselections[0].EndTime // 此时段最大就餐时间戳
-        // if (Date.parse(new Date(maxDate)) < Date.parse(new Date())) {
-        //     this.$toast.warning('订餐时间已过')
-        //     return
-        // }
-        let ids = this.selections.map(item => item.pID)
+
+        let oTime = this.MIMIselections[0].BeginTime
+        let oTimeH = (parseInt(oTime / 60)+'').padStart(2,0)
+        let oTimeD = (parseInt(oTime % 60)+'').padStart(2,0)
+        let bDate = `${moment(this.form.ReservationDate).format('YYYY-MM-DD')} ${oTimeH}:${oTimeD}`    // 订餐时间
+       
         PeosonalPosReservationInsert({
             IDList: this.pID,
             ReservationDate: moment(bDate).format('YYYY-MM-DD HH:mm:ss'),

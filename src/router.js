@@ -33,7 +33,10 @@ export default new Router({
     {
       path: '/Index',
       name: 'Index',
-      component: Indexx
+      component: Indexx,
+      meta: {
+        keepAlive: true
+      }
     },
     {
       path: '/personal',
@@ -231,5 +234,15 @@ export default new Router({
       path: "*", 
       redirect: "/404"
       }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+  }
 })

@@ -60,7 +60,7 @@
             <el-option v-for="(item,index) in [$t('Common.imgTips6'),$t('Common.卡号或编号'),$t('Common.phone_number')]" :key="index" :label="item" :value="item"></el-option>
             <span class="label_num" slot="prefix">{{$t('Common.登录类型')}}</span>
           </el-select>
-          {{item+'----'+$t('Common.卡号或编号')}}
+          <!-- {{item+'----'+$t('Common.卡号或编号')}} -->
           <el-input v-model="validateForm.username" size="small" name="username" type="text" auto-complete="off" :placeholder="$t('Common.please_enter')+item">
             <span class="label_num" slot="prefix">{{(item==$t('Common.卡号或编号'))?$t('Common.卡号/编号'):item}}</span>
           </el-input>
@@ -120,7 +120,7 @@ export default {
         isAgree: false,
         language_lang: 'zh'
       },
-      checked: false,
+      checked: true,
       people: this.$t('Common.个人'),
       // arrpeople:['管理员','个人'],
       
@@ -249,7 +249,8 @@ export default {
         authMode: authMode
       }
       let localStoraged = window.localStorage;
-      if (this.checked) {
+      // if (this.checked) { // 都将这些先存储起来
+      if (true) {
         localStoraged.setItem('LoginState', true);
         localStoraged.setItem('CustomerName', this.validateForm.CustomerName);
         localStoraged.setItem('UserName', this.validateForm.username);
@@ -514,6 +515,10 @@ export default {
         height: 21px;
         line-height: 21px;
         color: #757575;
+
+        widows: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
